@@ -50,4 +50,14 @@ describe Onfido::Check do
       expect(response['checks'].first['reports'].first).to be_a(Hash)
     end
   end
+
+  # It doesn't follow Onfido api conventions
+  xdescribe '#resume' do
+    let(:check_id) { '8546921-123123-123123' }
+
+    it "returns empty body" do
+      response = check.resume(check_id)
+      expect(response.body).to be_success
+    end
+  end
 end

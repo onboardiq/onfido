@@ -13,6 +13,12 @@ module Onfido
                        "#{querystring}"))
     end
 
+    def resume(check_id)
+      post(
+        url: url_for("checks/#{check_id}/resume")
+      )
+    end
+
     def all(applicant_id, page: 1, per_page: 20, expand: nil)
       querystring = "page=#{page}&per_page=#{per_page}"
       querystring += "&expand=#{expand}" if expand
